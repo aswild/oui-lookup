@@ -1,0 +1,15 @@
+[package]
+name = "oui-lookup"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.98"
+clap = { version = "4.5.39", features = ["cargo", "derive", "wrap_help"] }
+flate2 = { version = "1.1.1", features = ["zlib-rs"] }
+idna_adapter = "=1.0.0"
+
+[dependencies.reqwest]
+version = "0.12.16"
+default-features = false
+features = ["blocking", "gzip", "rustls-tls"]
