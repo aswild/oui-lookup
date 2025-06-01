@@ -1,6 +1,8 @@
 use std::cmp;
 use std::fmt;
 
+use serde::{Deserialize, Serialize};
+
 #[derive(Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
 pub struct MacAddress([u8; 6]);
 
@@ -83,7 +85,7 @@ impl MacAddress {
     }
 }
 
-#[derive(Clone, Copy, Eq, PartialEq)]
+#[derive(Clone, Copy, Eq, PartialEq, Serialize, Deserialize)]
 pub struct MacPrefix {
     /// Packed MAC address and prefix length.
     ///
@@ -181,7 +183,7 @@ impl MacPrefix {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Oui {
     pub mac_prefix: MacPrefix,
     #[allow(unused)]
@@ -206,11 +208,7 @@ impl Oui {
 
         let short_name = short.to_string();
         let long_name = long.to_string();
-        Some(Self {
-            mac_prefix,
-            short_name,
-            long_name,
-        })
+        Some(Self { mac_prefix, short_name, long_name })
     }
 
     #[inline]

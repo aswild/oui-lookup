@@ -6,8 +6,12 @@ edition = "2024"
 [dependencies]
 anyhow = "1.0.98"
 clap = { version = "4.5.39", features = ["cargo", "derive", "wrap_help"] }
+dirs = "6.0.0"
 flate2 = { version = "1.1.1", features = ["zlib-rs"] }
 idna_adapter = "=1.0.0"
+postcard = { version = "1.1.1", default-features = false, features = ["use-std"] }
+serde = { version = "1.0.219", features = ["derive"] }
+serif = "0.2.0"
 
 [dependencies.reqwest]
 version = "0.12.16"
